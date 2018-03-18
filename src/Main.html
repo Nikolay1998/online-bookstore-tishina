@@ -1,205 +1,41 @@
-                                                                                   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="РУСССССССССССССССКий">
 <head>
     <meta charset="UTF-8">
     <title>Магазин книг "Тишина"</title>
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
-<body>
-    <div class = "basic" id = "search">
-        <div id = "button">
-            <input type="search" value = "Название книги"><input type="submit" value="Найти">
-        </div>
-        <ul class = "sections">
-            <li><input type="checkbox" value="По всем"><a href="">По всем</a>
+<body bgcolor="#CCCCCC">
 
-            </li>
-            <li><input type="checkbox" value="По всем"><a href="">Учебная литература</a>
-                <ul class = "sections">
-                    <li><input type="checkbox" value="По всем"><a href="">Дошкольникам</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Школьникам и абитуриентам</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Студентам и аспирантам</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Педагогам</a></li>
-                </ul>
-            </li>
-            <li><input type="checkbox" value="По всем"><a href="">Детям и родителям</a>
-                <ul class = "sections">
-                    <li><input type="checkbox" value="По всем"><a href="">Досуг и творчество</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Книги для родителей</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Познавательная литература</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Художественная литература</a></li>
-                </ul>
-            </li>
-            <li><input type="checkbox" value="По всем"><a href="">Бизнес-литература</a>
-                <ul class = "sections">
-                    <li><input type="checkbox" value="По всем"><a href="">Деловая литература</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Маркетинг.Реклама</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Менеджмент</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Финансы</a></li>
-                </ul>
-            </li>
-            <li><input type="checkbox" value="По всем"><a href="">Художественная литература</a>
-                <ul class = "sections">
-                    <li><input type="checkbox" value="По всем"><a href="">Биографии</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Детективы. Боевики. Триллеры</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Поэзия</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Русская и зарубежная проза</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Фантастика. Фентези</a></li>
-                </ul>
-            </li>
-            <li><input type="checkbox" value="По всем"><a href="">Научная литература</a>
-                <ul class = "sections">
-                    <li><input type="checkbox" value="По всем"><a href="">Общественные и гуманитарные науки</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Точные науки</a></li>
-                </ul>
-            </li>
-            <li><input type="checkbox" value="По всем"><a href="">На инностранных языках</a>
-                <ul class = "sections">
-                    <li><input type="checkbox" value="По всем"><a href="">Англиский</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Французский</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Немецкий</a></li>
-                    <li><input type="checkbox" value="По всем"><a href="">Китайский</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-        <div class = "basic" id = "menu">
+<div id = "outer">
+    <div id = "menu" class = "basic" align="center">
         <ul class = "menu">
             <li><a href=""  class = "menu">Главная</a></li>
             <li><a href=""  class = "menu">Мой кабинет</a></li>
             <li><a href=""  class = "menu">Корзина</a></li>
             <li><a href=""  class = "menu">Войти</a></li>
-            <li><a href=""  class = "menu">Помощь</a></li>
+            <li><input type="search" value = "Название книги"><input type="submit" value="Найти"></li>
         </ul>
+    </div>
+    <div id = "search" class = "basic">
+        <a href="" class = "sections">По всем</a><br><br>
+        <a href="" class = "sections">Учебная литература</a><br><br>
+        <a href="" class = "sections">Детям и родителям</a><br><br>
+        <a href="" class = "sections">Бизнес-литература</a><br><br>
+        <a href="" class = "sections">Художественная литература</a><br><br>
+    </div>
+    <div id = "content" class = "basic">
+        Добро пожаловать на наш интернет-магазин книг!<br>
+        <h2>Новинки:</h2>
+        <div class="book">
+            <a href="">
+                <div class="img">
+                    <img src="book.jpg">
+                </div>
+                <div class="text">Книга</div>
+            </a>
         </div>
-        <br>
-        <div class = "basic" id = "content">
-            Добро пожаловать на наш интернет-магазин книг!<br>
-            <h2>Новинки:</h2>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-            <br><br>
-            <h2>Бестселлеры:</h2>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div><br><br>
-            <br><br>
-            <h2>Лучшие по мнению читателей:</h2>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-            <div class="book">
-                <a href="">
-                    <div class="img">
-                        <img src="book.jpg">
-                    </div>
-                    <div class="text">Книга</div>
-                </a>
-            </div>
-        </div>
+    </div>
+</div>
 </body>
 </html>
