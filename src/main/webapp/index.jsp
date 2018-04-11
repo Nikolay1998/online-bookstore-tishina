@@ -1,12 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="java.util.* " %>
-<%@page import="com.tishina.FirstClass" %>
-
-
-<%
-    FirstClass instance = new FirstClass();
-
-%>
 
 <html>
 	<head>
@@ -38,9 +31,7 @@
 
 	</head>
 	<body bgcolor="#FAFAD2">
-        <H1>Hello world</H1>
-        Java class says: <%=instance.testMethod() %>
-        Database says: <%=instance.testDBConnection() %>
+        <H1>Test page</H1>
         <table>
             <tr>
                 <td class="block1" onclick="alert('clicked!')">
@@ -51,10 +42,6 @@
                 </td>
                 <td><div class="block1"><a href="/books.jsp">Книга 2</a>
                 <img src="/img/Book1.jpg" alt="альтернативный текст">
-                <img src="Deposite/img/Book1.jpg" alt="альтернативный текст">
-                <img src="/Deposite/img/Book1.jpg" alt="альтернативный текст">
-                <img src="Deposite/WEB-INF/img/Book1.jpg" alt="альтернативный текст">
-                <img src="/Deposite/WEB-INF/img/Book1.jpg" alt="альтернативный текст">
                 </div></td>
 
                 <td><div class="block1"><a href="/books.jsp">Книга 3</a></div></td>
