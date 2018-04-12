@@ -1,6 +1,6 @@
 package com.tishina.util;
 
-import dao.TishinaDataSource;
+import com.tishina.dao.TishinaDataSource;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
