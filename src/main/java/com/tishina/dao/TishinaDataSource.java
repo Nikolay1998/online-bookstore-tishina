@@ -8,6 +8,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.JDBCType;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Collection;
@@ -41,10 +42,24 @@ public class TishinaDataSource {
         return instance.dataSource;
     }
 
-    public static Object executePreparedStatement(String sqlQuery, ResultSetHandler<Collection<Author>> handler) {
+    /**
+     *
+     * @param sqlQuery string that represents SQL query
+     * @param params 2-dimensions array that represents array of pairs {JDBCType type, Object value}.<br/>
+     *               For example: { {JDBCType.INTEGER, 100500}, {JDBCTYpe.VARCHAR, "Hello world"} };
+     *               If sql query doesn't need parameters use null
+     * @param handler instance of ResultSetHandler interface. Instance should be able to correctly retrieve values
+     *                from ResultSet and transform them into instance of @com.tihina.model.* classes
+     * @return object that represents result of executing query. In most cases it will be some Collection of model
+     * classes. For example: Collection<Author>, Collection<Book>, Book, Integer and so forth
+     */
+    public static Object executePreparedStatement(String sqlQuery, Object[][] params, ResultSetHandler handler) {
         try {
             Connection connection = instance.dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(sqlQuery);
+            if (params != null) {
+                setParametersToStatement(statement, params);
+            }
             return handler.handle(statement.executeQuery());
         } catch (SQLException ex) {
             ex.printStackTrace(System.err);
@@ -54,5 +69,17 @@ public class TishinaDataSource {
             throw new RuntimeException(ex);
         }
     }
+
+    private static void setParametersToStatement(PreparedStatement statement, Object[][] params) throws SQLException {
+        int i=0; //counter which points to parameter index. Starting from 1 - this is why we use prefix increment
+        for (Object[] parameter : params) {
+            if (JDBCType.INTEGER.equals(parameter[0])) {
+                statement.setInt(++i, (Integer) parameter[1]);
+            } else if (JDBCType.VARCHAR.equals(parameter[0])) {
+                statement.setString(++i, (String) parameter[1]);
+            }
+        }
+    }
+
 
 }

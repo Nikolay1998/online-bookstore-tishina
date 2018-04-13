@@ -1,18 +1,23 @@
 package com.tishina.model;
 
-import java.util.Collection;
-
-public class Author {
+public class Book {
 
     private Integer id;
     private String name;
     private String description;
-    private Collection<Book> books;
+    private Author author;
+    private Integer amount;
 
-    public Author(Integer id, String name, String description) {
+    public Book(Integer id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Book(Integer id, String name, String description, Author author, Integer amount) {
+        this(id, name);
         this.description = description;
+        this.author = author;
+        this.amount = amount;
     }
 
     public Integer getId() {
@@ -35,11 +40,19 @@ public class Author {
         this.description = description;
     }
 
-    public Collection<Book> getBooks() {
-        return books;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setBooks(Collection<Book> books) {
-        this.books = books;
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 }
