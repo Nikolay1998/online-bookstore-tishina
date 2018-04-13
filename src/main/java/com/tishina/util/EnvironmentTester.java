@@ -37,7 +37,7 @@ public class EnvironmentTester {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(mysqlTestConnectionQuery);
 
-            if (rs.next() && 1 ==rs.getInt(1) ) {
+            if (rs.next() && 1 == rs.getInt(1) ) {
                 return new EnvironmentTestResult(EnvironmentTestResult.Status.OK,
                         "Hello world from database! Select 1 from database: "+rs.getInt(1));
             }
