@@ -4,5 +4,5 @@ public interface DAOFactory {
 
     public AuthorDAO getAuthorDAO();
     public BookDAO getBookDAO();
-
+    public ArrivalDAO getArrivalDAO();
 }
