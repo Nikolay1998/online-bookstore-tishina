@@ -75,9 +75,12 @@ public class TishinaDataSource {
         for (Object[] parameter : params) {
             if (JDBCType.INTEGER.equals(parameter[0])) {
                 statement.setInt(++i, (Integer) parameter[1]);
-            } else if (JDBCType.VARCHAR.equals(parameter[0])) {
+            } else if (JDBCType.VARCHAR.equals(parameter[0]) || JDBCType.DATE.equals(parameter[0])) {
                 statement.setString(++i, (String) parameter[1]);
             }
+//            else if (JDBCType.DATE.equals(parameter[0])) {
+//                statement.setDate(++i, (java.sql.Date) parameter[1]);
+//            }
         }
     }
 

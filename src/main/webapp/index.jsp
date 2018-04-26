@@ -1,56 +1,42 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@page import="java.util.* " %>
 
-<html>
-	<head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Книженции</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин книг "Тишина"</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body bgcolor="#CCCCCC">
 
-		 <style type="text/css">
-           .block1 {
-            width: 200px;
-            height: 140px;
-            background: #FFFFFF;
-            padding: 10px;
-            padding-right: 20px;
-            border: solid 1px black;
-            float: left;
-            align: center;
-           }
-           .block2 {
-            width: 200px;
-            background: #fc0;
-            padding: 5px;
-            border: solid 1px black;
-            float: left;
-            position: relative;
-            top: 40px;
-            left: -70px;
-           }
-          </style>
-
-	</head>
-	<body bgcolor="#FAFAD2">
-        <H1>Test page</H1>
-        <table>
-            <tr>
-                <td class="block1" onclick="alert('clicked!')">
-                    <div>
-                    Книга 1
-                    <img src="/classes/img/Book1.jpg" alt="альтернативный текст">
-                    </div>
-                </td>
-                <td><div class="block1"><a href="/books.jsp">Книга 2</a>
-                <img src="/img/Book1.jpg" alt="альтернативный текст">
-                </div></td>
-
-                <td><div class="block1"><a href="/books.jsp">Книга 3</a></div></td>
-                <td><div class="block1"><a href="/books.jsp">Книга 4</a></div></td>
-                <td><div class="block1"><a href="/books.jsp">Книга 5</a></div></td>
-                <td><div class="block1"><a href="/books.jsp">Книга 6</a></div></td>
-                <td><div class="block1"><a href="/books.jsp">Книга 7</a></div></td>
-                <td><div class="block1"><a href="/books.jsp">Книга 8</a></div></td>
-            </tr>
-        </table>
-	</body>
+<div id = "outer">
+    <div id = "menu" class = "basic" align="center">
+        <ul class = "menu">
+            <li><a href=""  class = "menu">Главная</a></li>
+            <li><a href=""  class = "menu">Мой кабинет</a></li>
+            <li><a href=""  class = "menu">Корзина</a></li>
+            <li><a href=""  class = "menu">Войти</a></li>
+        </ul>
+    </div>
+    <div id = "search" class = "basic">
+        <input type="search" value = "Название книги"><br/><input type="submit" value="Найти"><br/>
+        <a href="" class = "sections">По всем</a><br><br>
+        <a href="" class = "sections">Учебная литература</a><br><br>
+        <a href="" class = "sections">Детям и родителям</a><br><br>
+        <a href="" class = "sections">Бизнес-литература</a><br><br>
+        <a href="" class = "sections">Художественная литература</a><br><br>
+    </div>
+    <div id = "content" class = "basic">
+        Добро пожаловать на наш интернет-магазин книг!<br>
+        <h2>Новинки:</h2>
+        <div class="book">
+            <a href="">
+                <div class="img">
+                    <img src="book.jpg">
+                </div>
+                <div class="text">Книга</div>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
 </html>

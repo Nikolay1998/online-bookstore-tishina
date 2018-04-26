@@ -167,6 +167,8 @@ ENGINE = InnoDB;
 CREATE INDEX `FK_BR_TO_CLIENT_idx` ON `bshop`.`Book_raiting` (`client_id` ASC);
 
 CREATE INDEX `FK_BR_TO_BOOK_idx` ON `bshop`.`Book_raiting` (`book_id` ASC);
+select database() bshop;
+select id, unique_names, amount, a_date from Arrival where date > 2000-01-01 and date < 2009-01-01 ;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
