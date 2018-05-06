@@ -39,7 +39,7 @@
             for (Author author : authors) {
         %>
             <tr>
-                <td><%=new Href("/author.jsp?id="+author.getId(), author.getName()).print() %></td>
+                <td><%=new HtmlHref("author.jsp", author.getId(), author.getName()).print() %></td>
                 <td><%=author.getDescription() %></td>
             </tr>
         <%

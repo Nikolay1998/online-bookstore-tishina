@@ -12,12 +12,12 @@
 %>
 
 <%
-    Collection<Arrival> arrivals = null;
-       if ("Show".equals(request.getParameter("Action")) &&
-                    request.getParameter("from") != null &&
-                     request.getParameter("to") != null &&
-                     !"".equals(request.getParameter("from"))
-                     && !"".equals(request.getParameter("to"))) {
+   Collection<Arrival> arrivals = null;
+   if ("Show".equals(request.getParameter("Action")) &&
+                request.getParameter("from") != null &&
+                 request.getParameter("to") != null &&
+                 !"".equals(request.getParameter("from"))
+                 && !"".equals(request.getParameter("to"))) {
         arrivals = arrivalDAO.getArrivalsByDate(request.getParameter("from"), request.getParameter("to"));
     } else {
         arrivals = arrivalDAO.getAllArrivals();
@@ -41,16 +41,16 @@
 
         <table cellspacing="2" border="1" cellpadding="5" width="600">
         <%
-                 for (Arrival arrival : arrivals) {
-                        %>
-                        <tr>
-                            <td><%=arrival.getUnique_names()%></td>
-                            <td><%=arrival.getAmount()%></td>
-                            <td><%=arrival.getA_date()%></td>
-                        </tr>
-                    <%
-                           }
-                    %>
+            for (Arrival arrival : arrivals) {
+        %>
+            <tr>
+                <td><%=arrival.getUnique_names()%></td>
+                <td><%=arrival.getAmount()%></td>
+                <td><%=arrival.getA_date()%></td>
+            </tr>
+        <%
+            }
+        %>
         </table>
 	</body>
 </html>

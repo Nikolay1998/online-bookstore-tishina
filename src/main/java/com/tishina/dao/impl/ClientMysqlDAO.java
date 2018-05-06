@@ -11,25 +11,36 @@ import java.sql.SQLException;
 
 
 public class ClientMysqlDAO implements ClientDAO {
-    private static final String getClientByLoginQuery = "select id, name, password where login = ?";
+    private static final String getClientByLoginAndPasswordQuery = "select id, name, login from Client where login = ? and password = ?";
 
     @Override
-    public Client getByLogin(Integer login) {
+    public Boolean isLogin(String login, String password) {
+        return (Boolean) TishinaDataSource.executePreparedStatement(
+                getClientByLoginAndPasswordQuery,
+                new Object[][]{{JDBCType.VARCHAR, login}, {JDBCType.VARCHAR, password}},
+                new ResultSetHandler() {
+                    @Override
+                    public Boolean handle(ResultSet rs) throws Exception {
+                        return rs.next();
+                    }
+                }
+        );
+    }
+
+    @Override
+    public Client getClient(String login, String password) {
         return (Client) TishinaDataSource.executePreparedStatement(
-                getClientByLoginQuery,
-                new Object[][]{{JDBCType.INTEGER, login}},
-                new ResultSetHandler<Client>(){
-                    public Client handle(ResultSet rs) throws SQLException {
+                getClientByLoginAndPasswordQuery,
+                new Object[][]{{JDBCType.VARCHAR, login}, {JDBCType.VARCHAR, password}},
+                new ResultSetHandler() {
+                    @Override
+                    public Client handle(ResultSet rs) throws Exception {
                         if (!rs.next()) {
-                            throw new RuntimeException("Can't find client with login = "+login);
+                            return null;
                         }
-                        Client client = null;
-
-                        client = new Client(rs.getInt("id"),
+                        Client client = new Client(rs.getInt("id"),
                                 rs.getString("name"),
-                                rs.getString("login"),
-                                rs.getString("password"));
-
+                                rs.getString("login"));
                         return client;
                     }
                 }

@@ -7,38 +7,38 @@
 
 <%!
     public static final ClientDAO clientDAO = DAOFactoryHolder.getDAOFactory().getClientDAO();
-
-
 %>
 
 <%
-    if (request.getParameter("login") == null) {
-        throw new RuntimeException("Id is not specified!");
+    Client client = null;
+    if ("Login".equals(request.getParameter("Action"))) {
+        client = clientDAO.getClient(request.getParameter("login"), request.getParameter("password"));
+        if (client != null) {
+            session.setAttribute("client", client);
+        }
     }
-    Integer login = Integer.valueOf(request.getParameter("login"));
-    Client client = ClientDAO.getByLogin(login);
+
+    if (session.getAttribute("client") != null) {
+        String redirectURL = "index.jsp";
+        response.sendRedirect(redirectURL);
+    }
 %>
 
 <html>
 <head>
 	<meta charset="utf8">
-	<title>Форма регистрации</title>
+	<title>Войти в кабинет</title>
 	<link rel="StyleSheet" href="css/login.css" type="text/css">
-
 </head>
 <body>
+    <%=("Login".equals(request.getParameter("Action")) ? "Login or password is incorrect!" : "") %>
 
-
-
-<div id="login_container">
-	<div id="form_container">
-		<p class="login-text">Авторизация на сайте</p>
-		<form method='POST'>
-		<input type='text' onFocus="if(this.value=='Логин')this.value=''" onblur="if(this.value=='')this.value='Логин'" name='username' value='Логин' class='text_input' />
-		<input type='text' onFocus="if(this.value=='Пароль')this.value=''" onblur="if(this.value=='')this.value='Пароль'" name='password' value='Пароль' class='text_input' />
-		<input type='submit' value='' id='login' name='login' />
-		</form>
-	</div>
-</div>
+    <form name="form" action="login.jsp">
+        <input type="text" name="login" value="" size="30" />
+        <br/>
+        <input type="text" name="password" value="" size="30" />
+        <br/>
+        <input type="submit" value="Login" name="Action" />
+    </form>
 </body>
 </html>

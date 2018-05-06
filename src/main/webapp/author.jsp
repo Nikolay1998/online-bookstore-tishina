@@ -43,7 +43,7 @@
                 <td>
                 <%
                     for (Book book : author.getBooks()) {
-                        Href href = new Href("/book.jsp?id="+book.getId(), book.getName());
+                        HtmlHref href = new HtmlHref("book.jsp", book.getId(), book.getName());
                         out.write(href.print());
                     }
                 %>
