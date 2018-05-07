@@ -21,34 +21,40 @@
 <html>
 	<head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Поиск по авторам</title>
+		<title>Магазин книг "Тишина"</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css">
 	</head>
 	<body bgcolor="#FAFAD2">
-
-        <table cellspacing="2" border="1" cellpadding="5" width="600">
-            <tr>
-                <td>Автор</td>
-                <td><%=author.getName()%></td>
-            </tr>
-            <tr>
-                <td>Об авторе</td>
-                <td><%=author.getDescription()%></td>
-            </tr>
-            <tr>
-                <td>Фото</td>
-                <td>TODO: улучшить базу, чтобы сохранять фото</td>
-            </tr>
-            <tr>
-                <td>Книги</td>
-                <td>
-                <%
-                    for (Book book : author.getBooks()) {
-                        HtmlHref href = new HtmlHref("book.jsp", book.getId(), book.getName());
-                        out.write(href.print());
-                    }
-                %>
-                </td>
-            </tr>
-        </table>
+        <div id = "outer">
+            <jsp:include page="menuFragment.jsp" />
+            <jsp:include page="searchFragment.jsp" />
+            <div id = "content" class = "basic">
+                <table cellspacing="2" border="1" cellpadding="5" width="600">
+                    <tr>
+                        <td>Автор</td>
+                        <td><%=author.getName()%></td>
+                    </tr>
+                    <tr>
+                        <td>Об авторе</td>
+                        <td><%=author.getDescription()%></td>
+                    </tr>
+                    <tr>
+                        <td>Фото</td>
+                        <td>TODO: улучшить базу, чтобы сохранять фото</td>
+                    </tr>
+                    <tr>
+                        <td>Книги</td>
+                        <td>
+                        <%
+                            for (Book book : author.getBooks()) {
+                                HtmlHref href = new HtmlHref("book.jsp", book.getId(), book.getName());
+                                out.write(href.print());
+                            }
+                        %>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 	</body>
 </html>

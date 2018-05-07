@@ -24,27 +24,36 @@
 
 <html>
 	<head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Поиск по авторам</title>
+        <meta charset="UTF-8">
+            <title>Магазин книг "Тишина"</title>
+            <link rel="stylesheet" href="css/style.css" type="text/css">
+        </head>
 	</head>
 	<body bgcolor="#FAFAD2">
-	    <form name="form" action="authors.jsp">
-            <input type="text" name="authorName" value="" size="30" />
-            <br/>
-            <input type="submit" value="Search" name="Action" />
-        </form>
+	    <div id = "outer">
+            <jsp:include page="menuFragment.jsp" />
+            <jsp:include page="searchFragment.jsp" />
 
-        <table cellspacing="2" border="1" cellpadding="5" width="600">
-        <%
-            for (Author author : authors) {
-        %>
-            <tr>
-                <td><%=new HtmlHref("author.jsp", author.getId(), author.getName()).print() %></td>
-                <td><%=author.getDescription() %></td>
-            </tr>
-        <%
-            }
-        %>
-        </table>
+            <div id = "content" class = "basic">
+                <form name="form" action="authors.jsp">
+                    <input type="text" name="authorName" value="" size="30" />
+                    <br/>
+                    <input type="submit" value="Search" name="Action" />
+                </form>
+
+                <table cellspacing="2" border="1" cellpadding="5" width="600">
+                <%
+                    for (Author author : authors) {
+                %>
+                    <tr>
+                        <td><%=new HtmlHref("author.jsp", author.getId(), author.getName()).print() %></td>
+                        <td><%=author.getDescription() %></td>
+                    </tr>
+                <%
+                    }
+                %>
+                </table>
+            </div>
+        </div>
 	</body>
 </html>

@@ -28,29 +28,35 @@
 <html>
 	<head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Поступления</title>
+		<title>Магазин книг "Тишина"</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css">
 	</head>
 	<body bgcolor="#FAFAD2">
-	    <form name="form" action="arrivals.jsp">
-            <input type="text" name="from" value="" size="30" />
-            <br/>
-            <input type="text" name="to" value="" size="30" />
-            <br/>
-            <input type="submit" value="Show" name="Action" />
-        </form>
+	    <div id = "outer">
+            <jsp:include page="menuFragment.jsp" />
+            <jsp:include page="searchFragment.jsp" />
 
-        <table cellspacing="2" border="1" cellpadding="5" width="600">
-        <%
-            for (Arrival arrival : arrivals) {
-        %>
-            <tr>
-                <td><%=arrival.getUnique_names()%></td>
-                <td><%=arrival.getAmount()%></td>
-                <td><%=arrival.getA_date()%></td>
-            </tr>
-        <%
-            }
-        %>
-        </table>
+            <div id = "content" class = "basic">
+                <form name="form" action="arrivals.jsp">
+                    <input type="text" name="from" value="" size="30" /><br/>
+                    <input type="text" name="to" value="" size="30" /><br/>
+                    <input type="submit" value="Show" name="Action" />
+                </form>
+
+                <table cellspacing="2" border="1" cellpadding="5" width="600">
+                <%
+                    for (Arrival arrival : arrivals) {
+                %>
+                    <tr>
+                        <td><%=arrival.getUnique_names()%></td>
+                        <td><%=arrival.getAmount()%></td>
+                        <td><%=arrival.getA_date()%></td>
+                    </tr>
+                <%
+                    }
+                %>
+                </table>
+            </div>
+        </div>
 	</body>
 </html>
