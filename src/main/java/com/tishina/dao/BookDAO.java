@@ -4,5 +4,5 @@ import com.tishina.model.Book;
 
 public interface BookDAO {
 
-    public Book getById(Integer id);
+    Book getById(Integer id);
 }

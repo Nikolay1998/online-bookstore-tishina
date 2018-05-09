@@ -7,10 +7,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.JDBCType;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Collection;
 
 /**
@@ -73,8 +70,13 @@ public class TishinaDataSource {
     private static void setParametersToStatement(PreparedStatement statement, Object[][] params) throws SQLException {
         int i=0; //counter which points to parameter index. Starting from 1 - this is why we use prefix increment
         for (Object[] parameter : params) {
+
             if (JDBCType.INTEGER.equals(parameter[0])) {
-                statement.setInt(++i, (Integer) parameter[1]);
+                if (parameter[1] == null) {
+                    statement.setNull(++i, Types.INTEGER);
+                } else {
+                    statement.setInt(++i, (Integer) parameter[1]);
+                }
             } else if (JDBCType.VARCHAR.equals(parameter[0]) || JDBCType.DATE.equals(parameter[0])) {
                 statement.setString(++i, (String) parameter[1]);
             }
@@ -85,4 +87,28 @@ public class TishinaDataSource {
     }
 
 
+    /**
+     *
+     * @param sqlQuery create/update/delete statement
+     * @param params 2-dimensions array that represents array of pairs {JDBCType type, Object value}.<br/>
+     *               For example: { {JDBCType.INTEGER, 100500}, {JDBCTYpe.VARCHAR, "Hello world"} };
+     *               If sql query doesn't need parameters use null
+     * @return count of updated rows
+     */
+    public static int executeDMLStatement(String sqlQuery, Object[][] params) {
+        try {
+            Connection connection = instance.dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sqlQuery);
+            if (params != null) {
+                setParametersToStatement(statement, params);
+            }
+            return statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.err);
+            throw new RuntimeException("Error during attempt to execute database query: " + ex.getMessage(), ex);
+        } catch (Exception ex) {
+            ex.printStackTrace(System.err);
+            throw new RuntimeException(ex);
+        }
+    }
 }

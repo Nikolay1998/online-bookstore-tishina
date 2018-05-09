@@ -6,6 +6,6 @@ import java.util.Collection;
 import java.util.Date;
 
 public interface ArrivalDAO {
-    public Collection<Arrival> getAllArrivals();
-    public Collection<Arrival> getArrivalsByDate(String from, String to);
+    Collection<Arrival> getAllArrivals();
+    Collection<Arrival> getArrivalsByDate(String from, String to);
 }

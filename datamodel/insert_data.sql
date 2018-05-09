@@ -31,3 +31,6 @@ insert into arrival values(4, 110, 93, '2010-09-13');
 insert into arrival values(5, 11, 123, '1998-09-13');
 insert into arrival values(6, 11, 123, '1998-09-13');
 insert into arrival values(7, 11, 123, '1998-09-13');
+
+insert into client values (0, 'Администратор', 'admin', 'admin', null);
+insert into client values (1, 'Николай Крайнов', 'dimarejf', '123', null);

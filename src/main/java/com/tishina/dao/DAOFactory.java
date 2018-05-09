@@ -2,8 +2,8 @@ package com.tishina.dao;
 
 public interface DAOFactory {
 
-    public AuthorDAO getAuthorDAO();
-    public BookDAO getBookDAO();
-    public ArrivalDAO getArrivalDAO();
-    public ClientDAO getClientDAO();
+    AuthorDAO getAuthorDAO();
+    BookDAO getBookDAO();
+    ArrivalDAO getArrivalDAO();
+    ClientDAO getClientDAO();
 }

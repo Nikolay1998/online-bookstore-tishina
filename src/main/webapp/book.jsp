@@ -41,7 +41,7 @@
                     </tr>
                     <tr>
                         <td>Автор</td>
-                        <td><%=book.getAuthor().getName()%></td>
+                        <td><%=new HtmlHref("author.jsp", book.getAuthor().getId(), book.getAuthor().getName()).print()%></td>
                     </tr>
                     <tr>
                         <td>Осталось на складе</td>
