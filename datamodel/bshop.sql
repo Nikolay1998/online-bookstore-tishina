@@ -8,9 +8,6 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema default_schema
--- -----------------------------------------------------
--- -----------------------------------------------------
 -- Schema bshop
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `bshop` ;
@@ -86,10 +83,11 @@ CREATE UNIQUE INDEX `login_UNIQUE` ON `bshop`.`Client` (`login` ASC);
 DROP TABLE IF EXISTS `bshop`.`Order` ;
 
 CREATE TABLE IF NOT EXISTS `bshop`.`Order` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `client_id` INT NULL DEFAULT NULL,
   `status` ENUM('Active', 'Completed') NULL DEFAULT NULL,
-  `Completion_date` DATE NULL DEFAULT NULL,
+  `completion_date` DATETIME NULL,
+  `creation_date` DATETIME NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `FK_ORDER_TO_CLIENT`
     FOREIGN KEY (`client_id`)

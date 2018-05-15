@@ -12,6 +12,7 @@ public class MysqlDAOFactory implements DAOFactory {
         daos.put(BookDAO.class, new BookMysqlDAO());
         daos.put(ArrivalDAO.class, new ArrivalMysqlDAO());
         daos.put(ClientDAO.class, new ClientMysqlDAO());
+        daos.put(OrderDAO.class, new OrderMysqlDAO());
     }
 
     public AuthorDAO getAuthorDAO(){
@@ -22,6 +23,9 @@ public class MysqlDAOFactory implements DAOFactory {
     }
     public ClientDAO getClientDAO(){
         return (ClientDAO) daos.get(ClientDAO.class);
+    }
+    public OrderDAO getOrderDAO() {
+        return (OrderDAO) daos.get(OrderDAO.class);
     }
     public ArrivalDAO getArrivalDAO(){ return (ArrivalDAO) daos.get(ArrivalDAO.class); }
 }

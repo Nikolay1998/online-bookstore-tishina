@@ -6,13 +6,11 @@
 
 <%!
     public static final BookDAO bookDAO = DAOFactoryHolder.getDAOFactory().getBookDAO();
-
-
 %>
 
 <%
     if (request.getParameter("id") == null) {
-        throw new RuntimeException("Id is not specified!");
+        throw new RuntimeException("Book id is not specified!");
     }
     Integer id = Integer.valueOf(request.getParameter("id"));
     Book book = bookDAO.getById(id);
@@ -30,24 +28,32 @@
             <jsp:include page="searchFragment.jsp" />
 
             <div id = "content" class = "basic">
-                <table cellspacing="2" border="1" cellpadding="5" width="600">
-                    <tr>
-                        <td>Книга</td>
-                        <td><%=book.getName()%></td>
-                    </tr>
-                    <tr>
-                        <td>О книге</td>
-                        <td><%=book.getDescription()%></td>
-                    </tr>
-                    <tr>
-                        <td>Автор</td>
-                        <td><%=new HtmlHref("author.jsp", book.getAuthor().getId(), book.getAuthor().getName()).print()%></td>
-                    </tr>
-                    <tr>
-                        <td>Осталось на складе</td>
-                        <td><%=book.getAmount()%></td>
-                    </tr>
-                </table>
+                <form action="./addBookToCard" method="POST">
+                    <table cellspacing="2" border="1" cellpadding="5" width="600">
+                        <tr>
+                            <td>Книга</td>
+                            <td><%=book.getName()%></td>
+                        </tr>
+                        <tr>
+                            <td>О книге</td>
+                            <td><%=book.getDescription()%></td>
+                        </tr>
+                        <tr>
+                            <td>Автор</td>
+                            <td><%=new HtmlHref("author.jsp", book.getAuthor().getId(), book.getAuthor().getName()).print()%></td>
+                        </tr>
+                        <tr>
+                            <td>Рейтинг</td>
+                            <td>TODO: </td>
+                        </tr>
+                        <tr>
+                            <td>Осталось на складе</td>
+                            <td><%=book.getWhAmount()%></td>
+                        </tr>
+                    </table>
+                    <input type="hidden" name="id" value=<%=book.getId()%> />
+                    <input type="submit" value="Добавить в корзину"/>
+                </form>
             </div>
         </div>
 

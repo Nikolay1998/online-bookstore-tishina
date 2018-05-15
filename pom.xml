@@ -10,21 +10,27 @@
     <packaging>war</packaging>
 
     <properties>
-        <local.glassfish.home>C:\\Progs\\glassfish4\\glassfish</local.glassfish.home>
+        <local.glassfish.home>C:\\Pavel\\glassfish4\\glassfish</local.glassfish.home>
         <local.glassfish.user>admin</local.glassfish.user>
         <local.glassfish.domain>domain1</local.glassfish.domain>
         <glassfish.password>adminadmin</glassfish.password>
         <local.glassfish.passfile>${local.glassfish.home}\\domains\\${local.glassfish.domain}\\config\\domain-passwords</local.glassfish.passfile>
     </properties>
 
-    <!--dependencies>
+    <dependencies>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.6</version>
         </dependency>
 
-    </dependencies-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>Tishina</finalName>

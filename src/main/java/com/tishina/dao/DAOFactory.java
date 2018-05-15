@@ -6,4 +6,5 @@ public interface DAOFactory {
     BookDAO getBookDAO();
     ArrivalDAO getArrivalDAO();
     ClientDAO getClientDAO();
+    OrderDAO getOrderDAO();
 }

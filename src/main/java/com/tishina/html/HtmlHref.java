@@ -1,9 +1,13 @@
 package com.tishina.html;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class HtmlHref {
     private String jspLink;
     private String id;
     private String name;
+    private Map<String, String> params = new HashMap<>();
 
     public HtmlHref(String jspLink, String name) {
         this.jspLink = jspLink;
@@ -21,12 +25,36 @@ public class HtmlHref {
         }
     }
 
+    public HtmlHref addParameter(String paramName, Object paramValue) {
+        if (paramValue instanceof String) {
+            params.put(paramName, (String) paramValue);
+        } else if (paramValue instanceof Integer) {
+            params.put(paramName, String.valueOf(paramValue));
+        }
+        return this;
+    }
+
     public String print() {
         StringBuilder sb = new StringBuilder()
                 .append("<a href=")
-                .append(jspLink)
-                .append(id == null ? "" : "?id="+id)
-                .append(">")
+                .append(jspLink);
+        if (params.isEmpty()) {
+            sb.append(id == null ? "" : "?id=" + id);
+        } else {
+            sb.append("?");
+            boolean isFirst = true;
+            for (Map.Entry<String, String> paramAndValue : params.entrySet()) {
+                if (isFirst) {
+                    isFirst = false;
+                } else {
+                    sb.append("&");
+                }
+                sb.append(paramAndValue.getKey())
+                        .append("=")
+                        .append(paramAndValue.getValue());
+            }
+        }
+        sb.append(">")
                 .append(name)
                 .append("</a><br/>");
         return sb.toString();
