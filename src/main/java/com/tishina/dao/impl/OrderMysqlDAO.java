@@ -67,7 +67,7 @@ public class OrderMysqlDAO implements OrderDAO {
     }
 
     @Override
-    public Order createOrder(Order order) {
+    public Integer createOrder(Order order) {
         Integer orderId = TishinaDataSource.executeCreateStatementAndGetAutoincrementedId(
                 INSERT_INTO_ORDER_TABLE_QUERY,
                 new Object[][]{{JDBCType.INTEGER, order.getClient().getId()}});
@@ -83,7 +83,7 @@ public class OrderMysqlDAO implements OrderDAO {
                             {JDBCType.INTEGER, bookAndAmount.getValue()}});
         }
 
-        return order;
+        return orderId;
     }
 
 }

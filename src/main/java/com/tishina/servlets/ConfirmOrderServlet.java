@@ -21,11 +21,10 @@ public class ConfirmOrderServlet extends HttpServlet {
         Client client = (Client) session.getAttribute("client");
         Card card = Card.getCard(session);
 
-        //todo: how can we get this bean in servlet??
         OrderService orderService = new OrderService();
-        Order order = orderService.submitNewOrder(client, card.getBooks());
+        Integer orderId = orderService.submitNewOrder(client, card.getBooks());
 
-        response.sendRedirect("./order.jsp?id="+order.getId());
+        response.sendRedirect("./order.jsp?id="+orderId);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

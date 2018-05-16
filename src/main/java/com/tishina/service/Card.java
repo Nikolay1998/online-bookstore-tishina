@@ -22,10 +22,6 @@ public class Card {
         books.put(bookId, existingAmountInOrder+amount);
     }
 
-    public synchronized void confirm() {
-       // Order order = new Order();
-    }
-
     public boolean isEmpty() {return books.isEmpty();}
 
     public synchronized List<Book> getBooks() {

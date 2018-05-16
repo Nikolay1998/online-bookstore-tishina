@@ -18,7 +18,6 @@ public class BookMysqlDAO implements BookDAO{
 
     @Override
     public Book getById(Integer id) {
-        System.out.println("BookMysqlDAO.getById START for id = "+id);
         return (Book) TishinaDataSource.executePreparedStatement(
                 getBookByIdQuery,
                 new Object[][]{{JDBCType.INTEGER, id}},
@@ -30,12 +29,11 @@ public class BookMysqlDAO implements BookDAO{
                         Author author = new Author(rs.getInt("a.id"),
                                 rs.getString("a.name"),
                                 rs.getString("a.about"));
-                        Book book = new Book(rs.getInt("b.id"),
+                        return new Book(rs.getInt("b.id"),
                                 rs.getString("b.name"),
                                 rs.getString("b.about"),
                                 author,
                                 rs.getInt("b.wh_amount"));
-                        return book;
                     }
                 }
         );
@@ -51,7 +49,6 @@ public class BookMysqlDAO implements BookDAO{
                         {JDBCType.INTEGER, book.getWhAmount()-book.getOrderedAmount()},
                         {JDBCType.INTEGER, book.getId()}}
         );
-        System.out.println("BookMysqlDAO.updateBook updated books count: "+updatedBookCount);
     }
 
 

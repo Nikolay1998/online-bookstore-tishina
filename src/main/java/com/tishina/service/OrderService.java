@@ -7,12 +7,17 @@ import com.tishina.model.Book;
 import com.tishina.model.Client;
 import com.tishina.model.Order;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.transaction.UserTransaction;
 import java.util.List;
 
 public class OrderService {
-    OrderDAO orderDAO = DAOFactoryHolder.getDAOFactory().getOrderDAO();
+    private OrderDAO orderDAO = DAOFactoryHolder.getDAOFactory().getOrderDAO();
 
     /**
+     * Create order for client with books. Created order is in status 'active'.
+     * Method is transactional. It means that if at least one operation fails then all operations should be cancelled
      * 1. check availability of books on warehouse<br/>
      * 2. create order<br/>
      *   2.1 row in order table<br/>
@@ -21,20 +26,29 @@ public class OrderService {
      * @param client client for which order should be created. Maybe null - it means that anonimous order should be created
      * @param books list of book and its amounts which client ordered
      */
-    public Order submitNewOrder(Client client, List<Book> books){
-        if (client == null) {
-            throw new UnsupportedOperationException("Order creation is not supported for anonimus. Please login");
-        }
-        //todo: Need to be transactional - if one operations fails then all should be cancelled
-        //todo: 1. need to check availability of books on warehouse
+    public Integer submitNewOrder(Client client, List<Book> books){
+        try {
+            if (client == null) {
+                throw new UnsupportedOperationException("Order creation is not supported for anonimus. Please login");
+            }
+            //todo: 1. need to check availability of books on warehouse
+            UserTransaction ut = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+            ut.begin();
 
-        BookDAO bookDAO = DAOFactoryHolder.getDAOFactory().getBookDAO();
-        for (Book book : books) {
-            bookDAO.updateBook(book);
-        }
+            BookDAO bookDAO = DAOFactoryHolder.getDAOFactory().getBookDAO();
+            for (Book book : books) {
+                bookDAO.updateBook(book);
+            }
+            //if (true) throw new Exception("Some exception to check transactionality");
+            Order order = new Order(client, books);
+            Integer orderId = orderDAO.createOrder(order);
 
-        Order order = new Order(client, books);
-        return orderDAO.createOrder(order);
+            ut.commit();
+            return orderId;
+        } catch (Exception ex) {
+            System.err.println(ex);
+            throw new RuntimeException(ex);
+        }
     }
 
     public Order getOrder(Integer id) {
