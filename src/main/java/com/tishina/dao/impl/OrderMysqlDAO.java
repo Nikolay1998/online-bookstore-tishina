@@ -9,10 +9,7 @@ import com.tishina.model.Order;
 
 import java.sql.JDBCType;
 import java.sql.ResultSet;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class OrderMysqlDAO implements OrderDAO {
     private static final String GET_ORDER_BY_ID_QUERY =
@@ -25,6 +22,9 @@ public class OrderMysqlDAO implements OrderDAO {
             "    left join order_book ob on o.id = ob.order_id\n" +
             "    left join book b on ob.book_id = b.id\n" +
             " where order_id = ?";
+
+    private static final String GET_ORDER_IDS_BY_CLIENT_ID_QUERY =
+            "select id order_id from bshop.order where client_id = ?";
 
     private static final String INSERT_INTO_ORDER_TABLE_QUERY =
             "insert into bshop.order(id, client_id, status, completion_date, creation_date) values(null, ?, 'Active', null, now())";
@@ -64,6 +64,24 @@ public class OrderMysqlDAO implements OrderDAO {
                     }
                 });
 
+    }
+
+    @Override
+    public List<Order> getOrdersByClient(Integer clientId) {
+        return (List<Order>) TishinaDataSource.executePreparedStatement(
+                GET_ORDER_IDS_BY_CLIENT_ID_QUERY,
+                new Object[][]{{JDBCType.INTEGER, clientId}},
+                new ResultSetHandler() {
+                    @Override
+                    public List<Order> handle(ResultSet rs) throws Exception {
+                        List<Order> result = new ArrayList<>();
+                        while (rs.next()) {
+                            result.add(getOrder(rs.getInt("order_id")));
+                        }
+                        return result;
+                    }
+                }
+        );
     }
 
     @Override

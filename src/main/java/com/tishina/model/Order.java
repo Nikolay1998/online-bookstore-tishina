@@ -64,4 +64,5 @@ public class Order {
     public void setBooks(Map<Book, Integer> books) {
         this.books = books;
     }
+    public boolean isActive(){return "Active".equals(status);}
 }

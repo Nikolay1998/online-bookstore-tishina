@@ -10,6 +10,7 @@ import com.tishina.model.Order;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.transaction.UserTransaction;
+import java.util.Iterator;
 import java.util.List;
 
 public class OrderService {
@@ -53,5 +54,19 @@ public class OrderService {
 
     public Order getOrder(Integer id) {
         return orderDAO.getOrder(id);
+    }
+
+    public List<Order> getOrdersByClient(Integer clientId, boolean onlyIsActive) {
+        List<Order> orders = orderDAO.getOrdersByClient(clientId);
+        if (onlyIsActive) {
+            Iterator<Order> it = orders.iterator();
+            while (it.hasNext()) {
+                Order order = it.next();
+                if (!order.isActive()) {
+                    it.remove();
+                }
+            }
+        }
+        return orders;
     }
 }
