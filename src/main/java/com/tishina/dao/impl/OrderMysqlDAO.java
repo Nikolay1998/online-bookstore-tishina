@@ -51,8 +51,7 @@ public class OrderMysqlDAO implements OrderDAO {
                         String orderStatus = rs.getString("status");
                         Map<Book, Integer> books = new HashMap<>();
                         do {
-                            Book book = new Book(rs.getInt("book_id"),
-                                    rs.getString("book_name"));
+                            Book book = new Book(rs.getInt("book_id"), rs.getString("book_name"));
                             books.put(book, rs.getInt("amount"));
                         } while( rs.next());
 

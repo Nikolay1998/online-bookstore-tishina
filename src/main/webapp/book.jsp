@@ -43,6 +43,10 @@
                             <td><%=new HtmlHref("author.jsp", book.getAuthor().getId(), book.getAuthor().getName()).print()%></td>
                         </tr>
                         <tr>
+                            <td>Категория</td>
+                            <td><%=new HtmlHref("category.jsp", book.getCategory().getId(), book.getCategory().getName()).print()%></td>
+                        </tr>
+                        <tr>
                             <td>Рейтинг</td>
                             <td>TODO: </td>
                         </tr>

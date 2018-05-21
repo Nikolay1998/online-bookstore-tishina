@@ -10,7 +10,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <local.glassfish.home>C:\\Pavel\\glassfish4\\glassfish</local.glassfish.home>
+        <local.glassfish.home>C:\\Progs\\glassfish4\\glassfish</local.glassfish.home>
         <local.glassfish.user>admin</local.glassfish.user>
         <local.glassfish.domain>domain1</local.glassfish.domain>
         <glassfish.password>adminadmin</glassfish.password>
