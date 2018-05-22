@@ -16,11 +16,14 @@
 
     <div id = "content" class = "basic">
         <c:set var = "id" scope = "session" value = "${param['id']}"/>
-        <table>
-            <c:forEach var="order" items="${orderService.getOrdersByClient(id, true)}">
+        <table cellspacing="2" border="1" cellpadding="5" width="700">
+            <c:forEach var="order" items="${orderService.getOrdersByClient(id, false)}">
             <tr>
                 <td><c:out value = "${order.getId()}"/></td>
+                <td><c:out value = "${order.getStartDate()}"/></td>
+                <td><c:out value = "${order.getCompletionDate()}"/></td>
                 <td><c:out value = "${order.getStatus()}"/></td>
+                <td><c:out value = "${order.getPrice()}"/></td>
             </tr>
             </c:forEach>
         </table>

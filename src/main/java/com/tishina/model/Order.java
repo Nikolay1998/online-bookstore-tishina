@@ -13,13 +13,21 @@ public class Order {
     private Date startDate;
     private Date completionDate;
     private Map<Book, Integer> books;
+    private Double price;
 
     public Order(Client client, List<Book> books) {
         this.client = client;
         this.books = new HashMap<>();
+        double orderPrice = 0;
         for (Book book : books) {
             this.books.put(book, book.getOrderedAmount());
+            Double bookPrice = book.getPrice();
+            if (bookPrice == null) {
+                bookPrice = 0d;
+            }
+            orderPrice = orderPrice + bookPrice * book.getOrderedAmount();
         }
+        this.price = orderPrice;
     }
 
     public Order(Integer id, Client client, Map<Book, Integer> books) {
@@ -63,6 +71,12 @@ public class Order {
     }
     public void setBooks(Map<Book, Integer> books) {
         this.books = books;
+    }
+    public Double getPrice() {
+        return price;
+    }
+    public void setPrice(Double price) {
+        this.price = price;
     }
     public boolean isActive(){return "Active".equals(status);}
 }

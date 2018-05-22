@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.* " %>
 <%@page import="com.tishina.service.*" %>
 <%@page import="com.tishina.model.*" %>
@@ -18,7 +19,7 @@
             <jsp:include page="searchFragment.jsp" />
 
             <div id = "content" class = "basic">
-                <table cellspacing="2" border="1" cellpadding="5" width="800">
+                <table cellspacing="2" border="1" cellpadding="5" width="700">
                   <thead>
                       <tr>
                         <td>Название</td>
@@ -31,7 +32,7 @@
                   </thead>
                   <tbody>
                     <c:set var = "id" scope = "session" value = "${param['id']}"/>
-                    <c:forEach var="book" items="${bookService.findBooksByCategoryId(categoryId)}">
+                    <c:forEach var="book" items="${bookService.findBooksByCategoryId(id)}">
                     <tr>
                         <td><c:out value = "${book.getName()}"/></td>
                         <td><c:out value = "${book.getAuthor().getName()}"/></td>

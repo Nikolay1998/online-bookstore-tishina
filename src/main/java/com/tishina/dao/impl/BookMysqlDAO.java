@@ -20,7 +20,7 @@ public class BookMysqlDAO implements BookDAO{
             " where b.id = ?";
 
     private static final String GET_BOOK_BY_CATEGORY_QUERY =
-            "select a.id, a.name, a.about, b.id, b.name, b.about, b.wh_amount, bc.id cat_id\n" +
+            "select a.id, a.name, a.about, b.id, b.name, b.about, b.wh_amount, b.price, bc.id cat_id\n" +
             "  from book b join book_category bc on b.book_category_id = bc.id\n" +
             "         left join Author a on b.author_id = a.id\n" +
             " where bc.id = ?";
@@ -46,7 +46,8 @@ public class BookMysqlDAO implements BookDAO{
                                 rs.getString("b.about"),
                                 author,
                                 rs.getInt("b.wh_amount"),
-                                rs.getInt("cat_id"));
+                                rs.getInt("cat_id"),
+                                rs.getDouble("b.price"));
                     }
                 }
         );
@@ -70,7 +71,8 @@ public class BookMysqlDAO implements BookDAO{
                                     rs.getString("b.about"),
                                     author,
                                     rs.getInt("b.wh_amount"),
-                                    rs.getInt("cat_id")));
+                                    rs.getInt("cat_id"),
+                                    rs.getDouble("b.price")));
                         }
                         return books;
                     }

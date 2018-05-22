@@ -17,7 +17,7 @@ public class Book {
     }
 
     public Book(Integer id, String name, String description, Author author, Integer whAmount, int categoryId
-                ) {
+                , Double price) {
         this(id, name);
         this.description = description;
         this.author = author;
@@ -70,6 +70,9 @@ public class Book {
     }
     public void setPrice(Double price) {
         this.price = price;
+    }
+    public String getRating() {
+        return "5";
     }
 
     public enum Category {

@@ -18,7 +18,7 @@
     <div id = "content" class = "basic">
         <c:set var = "id" scope = "session" value = "${param['id']}"/>
         <c:set var = "order" scope = "session" value = "${orderService.getOrder(id)}"/>
-        <table cellspacing="2" border="1" cellpadding="5" width="600">
+        <table cellspacing="2" border="1" cellpadding="5" width="700">
             <tr>
                 <td>Номер заказа:</td>
                 <td><c:out value="${order.getId()}"/></td>
@@ -34,6 +34,10 @@
             <tr>
                 <td>Статус:</td>
                 <td><c:out value="${order.getStatus()}"/></td>
+            </tr>
+            <tr>
+                <td>Сумма заказа:</td>
+                <td><c:out value="${order.getPrice()}"/></td>
             </tr>
             <tr>
                 <td>Книги   :</td>

@@ -14,7 +14,7 @@ public class BookService {
     }
 
     public List<Book> findBooksByCategoryId(Integer id) {
-        System.out.println("findBooksByCategoryId:  Start");
+        System.out.println("findBooksByCategoryId:  Start id="+id);
         Book.Category category = Book.Category.getCategoryById(id);
 
         System.out.println("findBooksByCategoryId: category = "

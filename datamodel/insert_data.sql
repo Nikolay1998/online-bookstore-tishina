@@ -45,13 +45,13 @@ insert into client values (0, 'Администратор', 'admin', 'admin', nu
 insert into client values (1, 'Иван Иванов', 'dimarejf', '123', null);
 insert into client values (2, 'Петр Петров', 'ppp', '123', 1);
 
-insert into bshop.order values (1, 1, 'Active', null, now());
+insert into bshop.order values (1, 1, 'Active', null, now(), 123);
 insert into order_book values(1, 1, 1);
 insert into order_book values(1, 2, 3);
-insert into bshop.order values (2, 1, 'Completed', now(), now());
+insert into bshop.order values (2, 1, 'Completed', now(), now(), 123);
 insert into order_book values(2, 3, 10);
 insert into order_book values(2, 4, 10);
-insert into bshop.order values (3, 2, 'Completed', now(), now());
+insert into bshop.order values (3, 2, 'Completed', now(), now(), 123);
 insert into order_book values(3, 5, 10);
 insert into order_book values(3, 6, 10);
 

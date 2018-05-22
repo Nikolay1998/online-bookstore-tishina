@@ -13,7 +13,7 @@ import java.util.*;
 
 public class OrderMysqlDAO implements OrderDAO {
     private static final String GET_ORDER_BY_ID_QUERY =
-            "select o.id order_id, o.creation_date, o.completion_date, o.status, \n" +
+            "select o.id order_id, o.creation_date, o.completion_date, o.status, o.price, \n" +
             "       c.id client_id, c.name client_name, c.login client_login, \n" +
             "       b.id book_id, b.name book_name, \n" +
             "       ob.*\n" +
@@ -49,6 +49,7 @@ public class OrderMysqlDAO implements OrderDAO {
                         Date startDate = rs.getDate("creation_date");
                         Date completionDate = rs.getDate("completion_date");
                         String orderStatus = rs.getString("status");
+                        Double orderPrice = rs.getDouble("o.price");
                         Map<Book, Integer> books = new HashMap<>();
                         do {
                             Book book = new Book(rs.getInt("book_id"), rs.getString("book_name"));
@@ -59,6 +60,7 @@ public class OrderMysqlDAO implements OrderDAO {
                         order.setCompletionDate(completionDate);
                         order.setStatus(orderStatus);
                         order.setStartDate(startDate);
+                        order.setPrice(orderPrice);
                         return order;
                     }
                 });
