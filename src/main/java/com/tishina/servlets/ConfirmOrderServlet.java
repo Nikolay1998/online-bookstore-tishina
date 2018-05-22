@@ -23,6 +23,7 @@ public class ConfirmOrderServlet extends HttpServlet {
 
         OrderService orderService = new OrderService();
         Integer orderId = orderService.submitNewOrder(client, card.getBooks());
+        card.clearCard();
 
         response.sendRedirect("./order.jsp?id="+orderId);
     }

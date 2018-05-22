@@ -32,7 +32,12 @@ public class OrderService {
             if (client == null) {
                 throw new UnsupportedOperationException("Order creation is not supported for anonimus. Please login");
             }
-            //todo: 1. need to check availability of books on warehouse
+
+            for (Book book : books) {
+                if (book.getWhAmount() < book.getOrderedAmount()) {
+                    throw new UnsupportedOperationException("There is no ordered amount of book in store");
+                }
+            }
             UserTransaction ut = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
             ut.begin();
 

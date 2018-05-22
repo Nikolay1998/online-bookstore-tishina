@@ -45,4 +45,8 @@ public class Card {
         return card;
     }
 
+    public void clearCard() {
+        books.clear();
+    }
+
 }
