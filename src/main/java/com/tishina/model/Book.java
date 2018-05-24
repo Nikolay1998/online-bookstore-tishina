@@ -16,6 +16,11 @@ public class Book {
         this.name = name;
     }
 
+    public Book(String name, Author author) {
+        this.name = name;
+        this.author = author;
+    }
+
     public Book(Integer id, String name, String description, Author author, Integer whAmount, int categoryId
                 , Double price) {
         this(id, name);
@@ -28,6 +33,9 @@ public class Book {
 
     public Integer getId() {
         return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
     }
     public String getName() {
         return name;
@@ -75,7 +83,9 @@ public class Book {
         return "5";
     }
 
+
     public enum Category {
+        UNKNOWN(0, "Без категории"),
         FIRST(1, "Учебная литература"),
         SECOND(2, "Детям и родителям"),
         THIRD(3, "Бизнес-литература"),
@@ -104,7 +114,7 @@ public class Book {
             else if (THIRD.id.equals(id)) return THIRD;
             else if (FORTH.id.equals(id)) return FORTH;
             else if (FIFTH.id.equals(id)) return FIFTH;
-            return null;
+            return UNKNOWN;
         }
     }
 }

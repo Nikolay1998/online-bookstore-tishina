@@ -10,7 +10,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <local.glassfish.home>C:\\Progs\\glassfish4\\glassfish</local.glassfish.home>
+        <local.glassfish.home>C:\\Pavel\\glassfish4\\glassfish</local.glassfish.home>
         <local.glassfish.user>admin</local.glassfish.user>
         <local.glassfish.domain>domain1</local.glassfish.domain>
         <glassfish.password>adminadmin</glassfish.password>
@@ -36,6 +36,12 @@
             <groupId>javax.transaction</groupId>
             <artifactId>jta</artifactId>
             <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.4</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

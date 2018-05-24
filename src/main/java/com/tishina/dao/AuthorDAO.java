@@ -9,4 +9,6 @@ public interface AuthorDAO {
     Author getById(Integer id);
     Collection<Author> getAllAuthors();
     Collection<Author> getAuthorsByName(String name, boolean matchAllWordOnly, boolean matchStartWith);
+    Author getAuthorByName(String name, boolean matchAllWordOnly, boolean matchStartWith);
+    Author createAuthor(Author author);
 }

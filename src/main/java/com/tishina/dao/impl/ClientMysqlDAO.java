@@ -15,7 +15,7 @@ public class ClientMysqlDAO implements ClientDAO {
     private static final String getClientByLoginAndPasswordQuery = "select id, name, login from Client where login = ? and password = ?";
     private static final String getClientByIdQuery = "select id, name, login from Client where id = ?";
     private static final String GET_CLIENT_BY_LOGIN = "select id, name, login from Client where login = ?";
-    private static final String createClientQuery = "insert into client(id, name, login, password, parent) values (?, ?, ?, ?, ?)";
+    private static final String CREATE_CLIENT_QUERY = "insert into client(id, name, login, password, parent) values (?, ?, ?, ?, ?)";
 
     @Override
     public Client getClientByLogin(String login) {
@@ -79,7 +79,7 @@ public class ClientMysqlDAO implements ClientDAO {
     @Override
     public Client createClient(Client client) {
         int createdClientCount = TishinaDataSource.executeDMLStatement(
-                createClientQuery,
+                CREATE_CLIENT_QUERY,
                 new Object[][]{
                         {JDBCType.INTEGER, IdGenerator.getIdGenerator().getNewId()},
                         {JDBCType.VARCHAR, client.getName()},
