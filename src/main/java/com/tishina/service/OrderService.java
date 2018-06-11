@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.transaction.UserTransaction;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class OrderService {
     private OrderDAO orderDAO = DAOFactoryHolder.getDAOFactory().getOrderDAO();
@@ -47,6 +48,7 @@ public class OrderService {
             }
             //if (true) throw new Exception("Some exception to check transactionality");
             Order order = new Order(client, books);
+            order.setPrice(calculateOrderCost(order));
             Integer orderId = orderDAO.createOrder(order);
 
             ut.commit();
@@ -73,5 +75,18 @@ public class OrderService {
             }
         }
         return orders;
+    }
+
+    public double calculateOrderCost(Order order) {
+        double orderPrice = 0;
+        for (Map.Entry<Book, Integer> bookAndAmount : order.getBooks().entrySet()) {
+            Book book = bookAndAmount.getKey();
+            Double bookPrice = book.getPrice();
+            if (bookPrice == null) {
+                bookPrice = 0d;
+            }
+            orderPrice = orderPrice + bookPrice * book.getOrderedAmount();
+        }
+        return orderPrice;
     }
 }

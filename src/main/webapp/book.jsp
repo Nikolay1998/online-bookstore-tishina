@@ -51,6 +51,10 @@
                             <td>TODO: </td>
                         </tr>
                         <tr>
+                            <td>Цена</td>
+                            <td><%=book.getPrice()%></td>
+                        </tr>
+                        <tr>
                             <td>Осталось на складе</td>
                             <td><%=book.getWhAmount()%></td>
                         </tr>

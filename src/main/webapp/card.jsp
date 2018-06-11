@@ -29,6 +29,10 @@
                         <td><c:out value = "${book.getOrderedAmount()}"/></td>
                     </tr>
                     </c:forEach>
+                    <tr>
+                        <td>Итого:
+                        <td><c:out value = "${card.calculatePrice()}"/></td>
+                    </tr>
                 </table>
                 <input type="submit" value="Оформить заказ"/>
             </form>

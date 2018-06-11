@@ -7,6 +7,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.Collection;
 
@@ -136,6 +137,8 @@ public class TishinaDataSource {
                 }
             } else if (JDBCType.VARCHAR.equals(parameter[0]) || JDBCType.DATE.equals(parameter[0])) {
                 statement.setString(++i, (String) parameter[1]);
+            } else if (JDBCType.DECIMAL.equals(parameter[0])) {
+                statement.setBigDecimal(++i, new BigDecimal((Double)parameter[1]));
             }
 //            else if (JDBCType.DATE.equals(parameter[0])) {
 //                statement.setDate(++i, (java.sql.Date) parameter[1]);

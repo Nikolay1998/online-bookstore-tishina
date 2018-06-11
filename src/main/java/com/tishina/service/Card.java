@@ -49,4 +49,14 @@ public class Card {
         books.clear();
     }
 
+    public double calculatePrice() {
+        BookDAO bookDAO = DAOFactoryHolder.getDAOFactory().getBookDAO();
+        double sum = 0;
+        for (Map.Entry<Integer, Integer> bookAndAmountEntry: books.entrySet()) {
+            Book book = bookDAO.getById(bookAndAmountEntry.getKey());
+            sum = sum + book.getPrice() * bookAndAmountEntry.getValue();
+        }
+        return sum;
+    }
+
 }

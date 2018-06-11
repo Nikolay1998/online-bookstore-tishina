@@ -18,16 +18,9 @@ public class Order {
     public Order(Client client, List<Book> books) {
         this.client = client;
         this.books = new HashMap<>();
-        double orderPrice = 0;
         for (Book book : books) {
             this.books.put(book, book.getOrderedAmount());
-            Double bookPrice = book.getPrice();
-            if (bookPrice == null) {
-                bookPrice = 0d;
-            }
-            orderPrice = orderPrice + bookPrice * book.getOrderedAmount();
         }
-        this.price = orderPrice;
     }
 
     public Order(Integer id, Client client, Map<Book, Integer> books) {
