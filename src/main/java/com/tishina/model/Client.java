@@ -1,11 +1,14 @@
 package com.tishina.model;
 
+import com.tishina.integration.SendMailTLS;
+
 public class Client {
     private Integer id;
     private String name;
     private String login;
     private String password;
     private Client referral;
+    private String email;
 
     public Client(String name, String login, String password, Client referral) {
         this.name = name;
@@ -43,5 +46,11 @@ public class Client {
     }
     public void setReferral(Client referral) {
         this.referral = referral;
+    }
+    public String getEmail() {
+        return SendMailTLS.username;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

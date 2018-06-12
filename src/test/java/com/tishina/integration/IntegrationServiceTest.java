@@ -1,10 +1,13 @@
 package com.tishina.integration;
 
+import com.tishina.model.Client;
+import com.tishina.model.Order;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.List;
 
 public class IntegrationServiceTest {
@@ -36,4 +39,10 @@ public class IntegrationServiceTest {
         Assert.assertEquals(testRowSecond, rows.get(1));
     }
 
+
+    public void sendEmail() {
+        Client client = new Client(null, "Колюсик", null);
+        Order order = new Order(client, Collections.emptyList());
+        SendMailTLS.sendMail(order);
+    }
 }

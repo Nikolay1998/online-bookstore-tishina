@@ -3,6 +3,7 @@ package com.tishina.service;
 import com.tishina.dao.BookDAO;
 import com.tishina.dao.DAOFactoryHolder;
 import com.tishina.dao.OrderDAO;
+import com.tishina.integration.SendMailTLS;
 import com.tishina.model.Book;
 import com.tishina.model.Client;
 import com.tishina.model.Order;
@@ -25,6 +26,7 @@ public class OrderService {
      *   2.1 row in order table<br/>
      *   2.2 row in order_book per each book<br/>
      * 3. decrease amount of each book on warehouse<br/>
+     * 4. send mail to client
      * @param client client for which order should be created. Maybe null - it means that anonimous order should be created
      * @param books list of book and its amounts which client ordered
      */
@@ -51,6 +53,7 @@ public class OrderService {
             order.setPrice(calculateOrderCost(order));
             Integer orderId = orderDAO.createOrder(order);
 
+            SendMailTLS.sendMail(order);
             ut.commit();
             return orderId;
         } catch (Exception ex) {
