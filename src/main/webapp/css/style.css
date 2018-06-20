@@ -5,34 +5,34 @@
 }
 
 .basic{
-    box-shadow: 2px 2px 5px #333333;
-    padding: 10px;
-    background-color: white;
-    border-radius: 10px;
+    box-shadow: 2px 2px 5px #333333; /*тень от блоков*/
+    padding: 10px;/**/
+    background-color: white;/*фоновый цвет*/
+    border-radius: 10px;/*закругление блока*/
 }
 #search {
-    position: absolute;
-    top: 60px;
-    left: 0px;
-    width: 200px;
-    height: 500px;
-    text-size: 15px;
+    position: absolute; /* */
+    top: 60px;/* сколько пикселей отсчитать от верхнего края внешнего блока (outer) */
+    left: 0px;/* сколько пикселей отсчитать от левого края внешнего блока (outer) */
+    width: 200px;/* ширина */
+    height: 500px;/* высота */
+    text-size: 15px;/* размер текста */
 }
 #menu {
-    height: 40px;
-    width: 1000px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    margin-top: 0px;
-    padding-top: 0px;
+    height: 40px; /* высота */
+    width: 1000px; /* ширина*/
+    position: absolute; /* позиция относительно внешнего элемента (outer) */
+    top: 0px; /* сколько пикселей отсчитать от верхнего края внешнего блока (outer) */
+    left: 0px; /* сколько пикселей отсчитать от левого края внешнего блока (outer) */
+    margin-top: 0px; /* отступ от соседнего элемента вверху */
+    padding-top: 0px; /* отступ контента от верхнего края блока */
 }
 #content{
-    position: absolute;
-    top: 60px;
-    left: 230px;
-    height: 500px;
-    width: 770px;
+    position: absolute; /* */
+    top: 60px;/* */
+    left: 230px;/* */
+    height: 500px;/* */
+    width: 500px;/* */
 }
 ul.menu li{
     display: inline;

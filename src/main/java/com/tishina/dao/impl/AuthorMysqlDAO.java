@@ -18,7 +18,9 @@ public class AuthorMysqlDAO implements AuthorDAO {
     private static final String getAllAuthorsQuery = "select id, name, about from Author LIMIT "+AUTHOR_COUNT_PER_SELECT;
     private static final String getAuthorByIdQuery = "select a.id, a.name, a.about, b.id, b.name " +
             "from Author a left join Book b on a.id = b.author_id where a.id = ?";
-    private static final String getAuthorsByNameQuery = "select id, name, about from Author where name = ?";
+    private static final String GET_AUTHOR_BY_NAME_QUERY = "select id, name, about from Author where name = ?";
+    private static final String GET_AUTHOR_BY_NAME_FRAGMENTAL_QUERY =
+            "select id, name, about from Author where UPPER(name) like UPPER('%?%')";
     private static final String CREATE_AUTHOR_QUERY = "insert into author(id, name, about) values (null, ?, ?)";
 
     @Override
@@ -68,10 +70,19 @@ public class AuthorMysqlDAO implements AuthorDAO {
     @Override
     public Collection<Author> getAuthorsByName(String name, boolean matchAllWordOnly, boolean matchStartWith) {
         System.out.println("AuthorMysqlDAO.getAuthorsByName START with name = " + name);
-        String queryToExecute = getAuthorsByNameQuery;
+        String queryToExecute = null;
+        Object[][] params = null;
+        if (matchAllWordOnly) {
+            queryToExecute = GET_AUTHOR_BY_NAME_QUERY;
+            params = new Object[][] {{JDBCType.VARCHAR, name}};
+        } else {
+            queryToExecute = "select id, name, about from Author where UPPER(name) like UPPER('%"+name+"%')";;
+            params = null;
+        }
+
         return (Collection<Author>) TishinaDataSource.executePreparedStatement(
                 queryToExecute,
-                new Object[][] {{JDBCType.VARCHAR, name}},
+                params,
                 new ResultSetHandler<Collection<Author>>() {
                     @Override
                     public Collection<Author> handle(ResultSet rs) throws Exception {
@@ -89,7 +100,7 @@ public class AuthorMysqlDAO implements AuthorDAO {
 
     @Override
     public Author getAuthorByName(String name, boolean matchAllWordOnly, boolean matchStartWith) {
-        Collection<Author> authors  =getAuthorsByName(name, matchAllWordOnly, matchStartWith);
+        Collection<Author> authors = getAuthorsByName(name, matchAllWordOnly, matchStartWith);
         if (authors != null && !authors.isEmpty()) {
             return authors.iterator().next();
         } else {

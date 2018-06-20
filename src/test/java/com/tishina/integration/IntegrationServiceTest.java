@@ -27,13 +27,13 @@ public class IntegrationServiceTest {
                 "Джоан Роулинг");
     }
 
-    @Test
     public void testFileParser() {
         Assert.assertEquals(true, file.exists());
 
         IntegrationService service = new IntegrationService();
         List<IntegrationService.AuthorBookRow> rows = service.parseInputFile(file);
         Assert.assertEquals(rows.size(), 4);
+
 
         Assert.assertEquals(testRowFirst, rows.get(0));
         Assert.assertEquals(testRowSecond, rows.get(1));

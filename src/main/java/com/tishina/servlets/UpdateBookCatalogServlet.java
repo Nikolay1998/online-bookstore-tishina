@@ -18,7 +18,7 @@ import java.io.IOException;
 public class UpdateBookCatalogServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        File file = new File("C:\\Pavel\\Views\\Kraynov\\Online-store\\src\\main\\webapp\\import_test.txt");
+        File file = new File("C:\\Users\\User\\IdeaProjects\\Online-store\\src\\main\\webapp\\import_test.txt");
 
         IntegrationService service = new IntegrationService();
         ImportReport report = service.updateBookCatalog(file);

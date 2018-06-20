@@ -19,7 +19,7 @@
         <div class="book">
             <a href="">
                 <div class="img">
-                    <img src="book.jpg">
+                    <img src="C:\Users\User\IdeaProjects\Online-store\book.JPG" />
                 </div>
                 <div class="text">Книга</div>
             </a>

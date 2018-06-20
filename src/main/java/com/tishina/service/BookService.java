@@ -18,7 +18,7 @@ public class BookService {
         Book.Category category = Book.Category.getCategoryById(id);
 
         System.out.println("findBooksByCategoryId: category = "
-                + (category == null ? "null" :category.getId())+"; "
+                + (category == null ? "null" :category.getId())+";"
                 + (category == null ? "null" :category.getName()));
         return bookDAO.getBooksByCategory(category);
     }

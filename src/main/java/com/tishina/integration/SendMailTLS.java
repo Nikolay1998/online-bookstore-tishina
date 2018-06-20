@@ -12,8 +12,8 @@ import java.util.Properties;
 //https://www.mkyong.com/java/javamail-api-sending-email-via-gmail-smtp-example/
 public class SendMailTLS {
     private static final String serverFrom = "bookonline_shop_service@gmail.com";
-    public static final String username = "pavlymontyi@gmail.com"; // need to authenticate?
-    private static final String password = "zG9517534682"; // need to authenticate?
+    public static final String username = "kriverson13@gmail.com"; // need to authenticate?
+    private static final String password = "nKraynov"; // need to authenticate?
     private static final Session session;
     static {
         Properties props = new Properties();
