@@ -30,29 +30,19 @@
 <head>
 	<meta charset="utf8">
 	<title>Войти в кабинет</title>
-	<link rel="StyleSheet" href="css/style.css" type="text/css">
+	<link rel="StyleSheet" href="css/login.css" type="text/css">
 </head>
 <body>
-<div id = "outer">
-    <jsp:include page="menuFragment.jsp" />
-    <jsp:include page="searchFragment.jsp" />
+<div id = "login_container">
 
-    <div id = "content" class = "basic">
-        <%=("Login".equals(request.getParameter("Action")) ? "<font color=red>Login or password is incorrect!</font>" : "Введите логин и пароль") %>
-
+    <div id = "form_container" >
+        <%=("Login".equals(request.getParameter("Action")) ? "<font color=red>Login or password is incorrect!</font>" : "") %>
+        <p class="login-text">Авторизация на сайте</p>
         <form name="form" action="login.jsp">
-            <table>
-                <tr>
-                    <td>Логин</td>
-                    <td><input type="text" name="login" value="" size="30" /></td>
-                </tr>
-                <tr>
-                    <td>Пароль</td>
-                    <td><input type="text" name="password" value="" size="30" /></td>
-                </tr>
-            </table>
-            <input type="submit" value="Login" name="Action" />
-            <input type="submit" value="Signin" name="Action" />
+           <input type="text" name="login" onFocus="if(this.value=='Логин')this.value=''" onblur="if(this.value=='')this.value='Логин'" value='Логин'  class='text_input' />
+           <input type="text" name="password" onFocus="if(this.value=='Пароль')this.value=''" onblur="if(this.value=='')this.value='Пароль'" value='Пароль' class='text_input' />
+           <input type="submit" value="Login" id= 'login' name="Action" />
+           <input type="submit" value="Signin" id='signin' name="Action" />
         </form>
     </div>
 </div>

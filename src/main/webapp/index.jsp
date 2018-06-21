@@ -7,7 +7,7 @@
     <title>Магазин книг "Тишина"</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
-<body bgcolor="#CCCCCC">
+<body>
 
 <div id = "outer">
     <jsp:include page="menuFragment.jsp" />
@@ -19,7 +19,7 @@
         <div class="book">
             <a href="">
                 <div class="img">
-                    <img src="C:\Users\User\IdeaProjects\Online-store\book.JPG" />
+                    <img src="img/book.jpg" />
                 </div>
                 <div class="text">Книга</div>
             </a>

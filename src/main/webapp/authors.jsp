@@ -29,7 +29,7 @@
             <link rel="stylesheet" href="css/style.css" type="text/css">
         </head>
 	</head>
-	<body bgcolor="#FAFAD2">
+	<body>
 	    <div id = "outer">
             <jsp:include page="menuFragment.jsp" />
             <jsp:include page="searchFragment.jsp" />

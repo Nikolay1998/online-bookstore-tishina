@@ -21,7 +21,7 @@
         <title>Магазин книг "Тишина"</title>
         <link rel="stylesheet" href="css/style.css" type="text/css">
 	</head>
-	<body bgcolor="#FAFAD2">
+	<body>
 
 	    <div id = "outer">
 	        <jsp:include page="menuFragment.jsp" />

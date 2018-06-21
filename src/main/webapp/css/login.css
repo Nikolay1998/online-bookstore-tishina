@@ -50,6 +50,19 @@ body {
 	background: url('../img/login_btn_hov.png') top left no-repeat;
 }
 
+#signin {
+	margin: 20px 108px;
+	border: 0;
+	width: 83px;
+	height: 30px;
+	background: url('../img/login_btn.png') top right no-repeat;
+	cursor:pointer;
+}
+#signin:hover {opacity:0.9;}
+
+#signin:active {
+	background: url('../img/login_btn_hov.png') top right no-repeat;
+}
 .login-text {
 	text-align:center;
 	margin:25px;

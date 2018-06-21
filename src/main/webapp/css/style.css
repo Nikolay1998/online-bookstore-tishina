@@ -1,3 +1,7 @@
+body {
+	background: url('../img/background.png') top left repeat;
+}
+
 #outer{
     position: relative;
     width: 1000px;
@@ -31,8 +35,8 @@
     position: absolute; /* */
     top: 60px;/* */
     left: 230px;/* */
-    height: 500px;/* */
-    width: 500px;/* */
+    min-height: auto;/* */
+    width: 775px;/* */
 }
 ul.menu li{
     display: inline;
