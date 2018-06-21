@@ -11,7 +11,7 @@ body {
 	width: 357px;
 	height: 383px;
 	margin: 100px auto;
-	background: url('../img/login_bg.png') top left no-repeat;
+	background: url('../img/login_bg.png') ;
 }
 
 #form_container {
@@ -32,36 +32,36 @@ body {
 	padding: 0px 0px 0px 10px;
 	width: 229px;
 	height: 32px;
-	background: url('../img/text_input.png') top left no-repeat;
+	background: url('../img/text_input.png') ;
 }
 
 #login {
-	margin: 20px 108px;
+	margin: 20px 20px;
 	border: 0;
 	width: 83px;
 	height: 30px;
-	background: url('../img/login_btn.png') top left no-repeat;
+	background: url('../img/login_btn.png') ;
 	cursor:pointer;
 }
 
 #login:hover {opacity:0.9;}
 
 #login:active {
-	background: url('../img/login_btn_hov.png') top left no-repeat;
+	background: url('../img/login_btn_hov.png') ;
 }
 
 #signin {
-	margin: 20px 108px;
+	margin: 20px 20px;
 	border: 0;
 	width: 83px;
 	height: 30px;
-	background: url('../img/login_btn.png') top right no-repeat;
+	background: url('../img/login_btn.png') ;
 	cursor:pointer;
 }
 #signin:hover {opacity:0.9;}
 
 #signin:active {
-	background: url('../img/login_btn_hov.png') top right no-repeat;
+	background: url('../img/login_btn_hov.png') ;
 }
 .login-text {
 	text-align:center;
